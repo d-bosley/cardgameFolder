@@ -11,7 +11,7 @@ public class singleton<T> : MonoBehaviour where T : Component
         {
             if (instance == null)
             {
-                Debug.Log($"Lookimg for singleton of type (typeof(T))");
+                Debug.Log($"Looking for singleton of type (typeof(T))");
                 instance = FindObjectOfType<T>();
 
                 if (instance == null)

@@ -27,6 +27,7 @@ public class Monster : MonoBehaviour
         clicked = false;
         phaseOK = false;
         health = 30;
+        bleed = 0;
     }
 
     // Update is called once per frame
@@ -47,6 +48,7 @@ public class Monster : MonoBehaviour
         {
             PlayerAttack();
             MonsterAttack();
+            clicked = false;
         }
         
         healthText = "BOSS HEALTH: \n" + health;
@@ -93,10 +95,10 @@ public class Monster : MonoBehaviour
                 if(childCard.ability == "Buffing" || childCard.ability == "Protecting")
                 {
                     defended = true;
-                    break;
+                    //break;
                 }
                 
-                else if(childCard.ability == "Healing" || childCard.ability == "Effecting")
+                if(childCard.ability == "Healing" || childCard.ability == "Effecting")
                 {
                     bleed = 0;
                     //break;
@@ -112,8 +114,10 @@ public class Monster : MonoBehaviour
         if(!defended)
         {
             bleed += hitPoint;
-            hitPoint = 0;
-            return;
+        }
+        else
+        {
+            bleed = bleed;
         }
     }
 
